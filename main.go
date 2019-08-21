@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"runtime"
 	"time"
-	"github.com/zhengjianwen/hr_service/model"
-	"golang.org/x/sync/errgroup"
-	"github.com/zhengjianwen/hr_service/conf"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/sync/errgroup"
 
+	"github.com/zhengjianwen/hr_service/model"
+	"github.com/zhengjianwen/hr_service/conf"
 	"github.com/zhengjianwen/hr_service/views"
 	"github.com/zhengjianwen/utils/log"
 )

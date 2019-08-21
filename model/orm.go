@@ -2,7 +2,6 @@ package model
 
 import (
 	"fmt"
-
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
 	_ "github.com/mattn/go-sqlite3"
@@ -28,7 +27,7 @@ func InitSQL() (err error) {
 }
 
 func ConnSqlite() (*xorm.Engine,error) {
-	db, err := xorm.NewEngine("sqlite3", "db/hr_jbtm.db")
+	db, err := xorm.NewEngine("sqlite3", "./db/hr_jbtm.db")
 	if err != nil {
 		log.Fatalf("[ConnSqlite] connect sqlite3 => %v\n", err)
 		return nil,fmt.Errorf("连接失败")
@@ -41,6 +40,9 @@ func ConnSqlite() (*xorm.Engine,error) {
 
 
 func initTables()  {
-	Orm.Sync2(Service{})
-	Orm.Sync2(ServiceGroup{})
+	Orm.Sync(Service{})
+	err := Orm.Sync(ServiceGroup{})
+	if err != nil{
+		log.Fatalf("[initTables] ")
+	}
 }
